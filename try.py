@@ -493,3 +493,43 @@ for i in range(len(l)):
         if l[i] < l[j]:
             l[i],l[j] = l[j],l[i]
 print(l)  
+
+
+
+
+def add():
+    global a  # declare 'a' as global inside the function
+    a = 24
+    print(a)    # this will now act as a global variable
+
+add()  
+# a = 45      # call the function to set the global variable
+print(a) 
+
+
+
+
+
+n = int(input("Enter any number: ")) 
+
+for i in range(n+1):
+    if i % 2 == 0 and i % 3 == 0:
+        print("buzz fuzz")       # divisible by 2 and 3
+    elif i % 2 == 0:
+        print("buzz")            # only divisible by 2
+    elif i % 3 == 0:
+        print("fuzz")            # only divisible by 3
+    else:
+        print(i)
+
+
+
+
+
+n = 3456432 
+sum = 0 
+while n > 0 :
+    r = n % 10 
+    sum = sum * 10 + r 
+    n = n // 10 
+print(sum)
