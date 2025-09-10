@@ -462,4 +462,34 @@
 #     count = count + 1 
 
 
-print('mueksh kumar')  ####
+
+
+# class Employee:
+#     def __init__(self,name ,age):
+#         self.name = name
+#         self.age = age
+
+#     def show(self):
+#         print(self.name)
+#         print(self.age) 
+
+# e = Employee('rikesh',34) 
+# e1 = Employee('rikesh',34) 
+# print(e == e1) 
+
+
+d = {}
+d[1] = 1 
+d[True] = 2 
+d[1.0] = 3 
+# print(len(d)) 
+print(d)
+
+#       sort the element 
+
+l = [23,43,21,35,46,25] 
+for i in range(len(l)):
+    for j in range(i):
+        if l[i] < l[j]:
+            l[i],l[j] = l[j],l[i]
+print(l)  
