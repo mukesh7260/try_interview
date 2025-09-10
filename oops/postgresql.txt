@@ -1,0 +1,190 @@
+sudo nano /etc/postgresql/12/main/pg_hba.conf
+sudo -i -u postgres
+psql
+ALTER USER postgres PASSWORD 'postgres';
+\q
+exit
+hba.conf file 
+restart command chalana hai
+psql -U postgres
+
+
+
+postgresql user : - postgres
+password : mypassword
+
+				POSTGRESQL DB SYNTAX
+
+
+1. \l : - to show all databases in postgresql.								
+2. create database db_name;
+3. \c : - switch to db; 
+4	drop databse dbname; - delete the db
+5	\q : - for exit the psql
+6	create table tbname(id int not null primary key,fname txt not null , lname txt not null, age int not null);
+7	\d : - show table list. 
+8.	drop table tbname; :- delete the table.
+9	create schema schema_name;
+	drop schema schema_name;
+	insert into tbname(id,fname,lname,age) values(1,'mukeksh','kumar',25);    sequence added in the table
+	select * from tbname;
+	insert into tbname values(2,67, 'kumar', 'mukesh);    	randomly added in the table
+	insert into tbname values(2,'name','kumar',12),(4,'moham','kumar',42)     multiple data added in the table.
+	select id , fname from tbname;
+	select * from tbname where id = 20;
+	select * from tbname where lname = 'kumar' AND age>20;
+	update tbname set lname = 'Shrame' where age = 22;
+	update tbname set fname = 'krishna', lname = 'kumar' where age = 22;
+	delete from tbname where id = 5;
+	select * from tbname order by age asc/desc;
+	select * from tbname order by age, fname, lname asc/desc;
+	select name ,sum(salary) from teachers group by names;
+	select name from teachers group by name having count(name) >2;
+	select * form students where lname='mukesh' and age>23;
+	select * form students where lname='mukesh' or age>23;
+	select * from students where (fname = 'mukesh' or lname ='kumar') and age >25;
+	select * from students where fname is not null;
+	select * from students where fname like 'ja%';
+	select * from students where where age in (12,23,34);
+	select * from students where where age not in (12,23,34);
+	select * from students where age between 15 and 25;
+	create view new_students as select fname, age from students;
+	select * from new_students;
+	drop view new_students;
+	select students.fname, students.lame,teachers.name from students inner join teachers on students.id = teachers.id;
+	select students.fname, students.lname ,teachers.name from students left join teachers on students.id = teachers.id;
+	select students.fname, students.lname, teachers.name from students right join teachers on students.id = teachers.id;
+	select students.fname, students.lname, teachers.name from students full outer join teachers on students.id = teachers.id;
+	select fname ,name from students cross join teachers;
+	select max(age) from students;	or select max(age) as max_age from students;
+	select avg(age) from students; or select ave(age) as avg_age from students;
+	select round(avg(age),2) as avg_age from studnets;
+	select sum(salary) as total_salary from students;
+	select count(*) from teachers;
+
+		user define function in psql.
+ 	create or replace function total_students()
+	returns integer as $total$
+	declare total integer;
+	begin
+	select count(*) into total from students;
+	return total;
+	end;
+	$total$ language plpgsql;
+
+	use this function
+ 	select * from total_students();
+
+	   	example. 
+ 	create funtion sum(var1 integer , var2 integer)
+	returns integer as $sum$
+	begin	
+	return var1 + var2;
+	end;
+	$sum$ language plpgsql;
+
+
+		trigger concept psql.
+
+	create tabel employees(id int primary key not null, name text not null, salary int not null)
+	create table audit(id int primary key not null, name text not null, entry_date text);
+	
+
+	create or replace function audit_log() returns trigger as $xyz$
+	begin
+	insert into audit(id,name,entry_date)values(new.id,new.name,current_timestamp);
+	return new
+	end;
+	$xyz$ language plpgsql;
+
+	create trigger audit_trigger after insert on employees
+	for each row execute procedure audit_log();
+	
+	select max(age) as max_age from students;  	# max_age is called alias in data table.
+
+	select s.fname, t.name from students as s, teachers as t where s.id = t.id;
+
+		
+				  MYSQL COMMAND 
+		Table : -  emp  , Department 
+		field : -  depno   ,	depno 
+		depno. is the both common field	in table emp & Department.
+
+
+	
+select * from table1._name inner join table2_name on table1.common_field_name = 		table2.common_field_name    
+select * from table1_name left join table2_name on  table1.common_field_name = 	table2.common_field_name 
+select * from table1_name  right join table2_name on table1.common_field_name = 	table2.common_field_name 
+select * from table1_name full outer join table2_name on table1.common_field_name = 	table2.common_field_name 
+
+
+Primary Key: - It does not contains null values. Primary key is only one in one table. 
+
+unique Key : - It contain null values. more than one unique key in one table. 
+
+
+				Q. Theorytical question for interview. 
+
+Q. What is constraint ?
+ans:- constraint can be used to specify the limit on the data type of table. constraint can be specified while creating or altering  the table statement. sample of constraint are:
+NOt NUll.
+CHECK
+DEFAULT
+UNIQUE
+PRIMARY kEY
+FOREIGN KEY 
+
+create table student(
+id int NOT NULL :- NOT NULL is constraint. 
+Name varchar(20) NOT NULL
+AGE INT NOT NULL 
+);
+
+Q. what is the difference type of sql command ? 
+ans:- DML:- select, insert, update and delete
+      DDL:- Create, Alter, Drop
+      DCL:- Grant ,Revoke
+      TCL:- Begin, Tran,commit, Rollback
+
+Q. what is primary key ? 
+ans:- A primary key is used to uniquely identify all the records. It can not have NULL values, and It must contain unique value. A table can have only one primary key that consist of single or multiple fields.
+
+Q. what is unique id? 
+ans: - uniquely key contaians null value also. 
+
+create tabel student(
+ID int NOT NULL ,
+ENAME varchar(23),NOT NULL
+EAGE int,
+PRIMARY KEY(ID)
+);
+
+Q. What is Foriegn key ? 
+ans:- Reference of primary key is called foreign key. 
+create table order(
+orderId int NOT NULL,
+order number int NOT NULL,
+PersonId int,
+PRIMARY kEY(orderId),
+FOREIGN KEY(PersonId) REFERENCES Persons(PersonId)
+
+Q. Find the second heighest salary ? 
+ans: select max(e_salary) from employee where e_salary not in (select max(e_salary) from employee)
+
+Q. difference b/w delete & turncate ? 
+ans:- delete- This query is used to delete or remove one or more existing tables.
+Truncate:- this statement deletes all the data from inside a table.
+delete from tbname where id = 2
+turncate table tbname;
+
+Q. what is difference b/w order by & group by? 
+ans:- order by:- order by means show assending , decending & randomly order. 
+      group by: - data show colomn field name 
+
+Q. what's second salary sql command ? 
+ans:- select salary from employee order BY salary DESC LIMIT N-1,1;
+select Name FROM Employee where Name LIKE 'A%';
+select CURRENT_DATE, CURRENT_DATE(),CURDATE(),DATE(NOW()),DATE(CURRENT_TIMESTAMP())
+select * from employee where id%2 == 0;
+ 
+													 	 

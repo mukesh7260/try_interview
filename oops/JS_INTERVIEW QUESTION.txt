@@ -1,0 +1,184 @@
+Q. what is undeclare variable ?
+
+ans: - undeclare variable are not exist and are not declare in the program. Running the program run time error will be occour. 
+
+Q. what is undefined variable ? 
+ans: - undefined variable are the ones which exist in the program but are not defined or not assigned any value for that variable. 
+
+Q. What is this keyboard in js? 
+ans: - this keyword hold the current object data. 
+
+Q. what is SetTimeOut function ? 
+ans: - SetTimeOut function is used to call the function given as a parameter after some time delay. 
+
+Q. what is SetInterval function ? 
+
+ans:- SetInterval function is used to call the function repeatedly after some time delay. 
+
+Q. what is ClearInterval function ? 
+ans: - ClearInterval function is used to clear the time set from function SetInterval(). 
+Q. What is === operator ?
+ans: - this check same data type & same value. 
+
+Q. what is == operator ? 
+ans: - this check only same value. not data type. 
+
+Q. document.getElementById('id')
+
+Q. how to convert string to integer ? 
+
+ans: - using parseInt() keyboard. 
+
+Q. there are three loop in java scripts 
+ while
+ for
+ do-while
+
+Q. detect operating system version 
+ans: - Navigator.appVersion()
+
+Q. Prompt,Confirm & Alert are the popup box in java scripts. 
+
+Q. Primary & composite are the two data type of java scripts. 
+
+Q. Boolean , number & string are the Primary data types in java Scripts 
+
+Q. objects and array are the composite data types in java scripts. 
+
+Q. why to use InnerHtml in js? 
+ans: - to show or display on html page of html code. 
+document.getElementById('mukesh').innerHTML
+
+Q. how can we create object in js? 
+var testobj = new object()
+
+Q. push : - insert element at last position
+   unshift : - insert element at begining 
+   pop : remove element from last 
+   shift: remove element from first
+
+Q. document.getElementById('mukesh').checked
+
+Q. explain null in java scripts ? 
+ans: - Null is used to represent no object or no values . It mainly implies to null string. 
+
+Q. difference b/w confirm & alert 
+ans: - confirm : - two button one is 'ok' and other is 'cancel'. 
+       alert : - It contains only one buttons. 
+
+Q. what is comma operator ? 
+ans: - The comma operator is used to evaluates each of its operands from left to right. 
+
+Q. r = 1 + 2 +'3'
+ans: - document.write(r)
+ans: - 33 bcz 1+2 is 3 then 3 is concatanate with 3. 
+
+Q. what is let keyword? 
+ans: - let is local variable allow only . value change in let variable.
+
+Q. var keyword? 
+ans: - var keyword define locally or globally in the code of java scripts
+
+Q. what is const variable? 
+ans:- constant variable should not change the value. it neither updated or re-declare of value. 
+
+Q. what is spread operator ? 
+ans: - Spread operator allows an iterable to expand in places where  0 + arguments are expected. It mostly used in the variable array there is more than 1 values are expected. 
+
+var variablename = [...values];
+
+Q. what is different types of data types in js? 
+ans: - undefined , null, boolean, string, symbol , number , object. 
+
+Q. what is typeOf in js? 
+ans:- typeOf check basically data type that ie string or not , boolean or not. 
+
+Q. what is value is 13+6+'2' ?
+ans: - 192 bcz 13+6 = 19 & these 19 concatinate with 2 so, ans is 192.
+
+Q. what is null in js? 
+ans:- The null value is used to represent no value or no object.
+It implies no object or null string, no valid Boolean value, no number and no array object. 
+
+Q. what is templates litrals ES6? 
+ans:- Templates literals are strings with embeded code and variables inside them. 
+Templates literals allow us concatenation and interpolation in much more clear and easy way
+
+Q. What is NaN in java scripts?
+ans:- NaN represents a string value but not any number. 
+ie var NaN = 34 -> False
+   var NaN = 'mukesh' -> True. 
+
+Q. console.log(false==0) - False
+   console.log(false===0) - True,bcz false is boolean data type and it contains 0 or 1. that's why it is true. 
+
+Q.console.log(1<2<3) - False
+  console.log(3>2>1) - False
+
+Q. what is difference b/w display & visibility ? 
+display:- It means tag in question will not appear on the page at all . There will no space allocated b/w tags.
+visibility:- It means unlike display none. the tag is not visible but it can allocate space b/w tags. 
+
+Q. write name of few new feature of HTML5. 
+ans:- header, nav, footer, section,aside & article. 
+
+Q. what is arrow function in java Scripts?
+ans:- arrow function create a new function in a cleaner way compared to regular. 
+
+Q. what is meta data in html5 ? 
+ans:- Meta data is a set of additional HTML tag for specifying the additional information about the web page. 
+	some of the meta data tags are:- 
+Name , Author, Keywords
+
+Q. escape() funtion: - It is responsible for coding a string so as to make the transfer of the information from one computer to others. 
+
+Q. unescape()funtion:- It is very important as it decode the coded string. 
+
+Q. who developed java scripts??
+ans:- Brendan Eich
+
+Q. what is callByValue() function in java scripts? 
+ans:- 
+
+Q. what is undeclare & undefined ? 
+ans: -  undeclare:- Not initialize and not declare variable. runtime error occour
+	undefined: - declare  but not assign any value in the variables , undefined value occour
+
+Q. what is null in java scripts ? 
+ans:- implies no value or no object. 
+
+Q. what is event bubbling in java script? 
+ans:- Event first captured , handled by target element & propagate to parent element until it reaches the document object.
+
+Q. what is NaN in java scripts? 
+ans:- Not-a-Number only it accept for string value. 
+isNan()- Function helps to identify if a value is a number or not. 
+
+Q. how many types of errors in java scripts? 
+ans:- syntax error :- occour at interpret time.
+	Run time error :- Occur during execution time
+	Logical errors :- No errors are thrown but you don't get intended result also. 
+
+Q. whats differences b/w null & undefined? 
+ans:-  null:- variable defined but not assigned a value
+	undefined:- variable declared but not defined.
+
+Q. what is call back function in java scripts? 
+ans:- A callback is a javaScripts function that is passed to another function as an argument or a parameter.
+This function is to be executed whenever the function that it is passed to gets executed. 
+
+Q. what is closure in java scripts? 
+ans:- whenever a variable that is defined outside the current scope is accessed within the current scope.  
+
+Q. what is arrow function ?
+ans:- arrow function are a shorting way of writing function in java scripts.
+
+Q.what is difference b/w call & apply ? 
+ans:- call():- call method arguments are provided indivisually along with a 'this' value.
+	apply():- apply method , agguments are provided in the form of an array alogn with a 'this' value. 
+
+Q. How do you remove duplicates from a javascripts array? 
+ans: - using filter method. 
+
+Q. what is DOM ? 
+ans:- DOM:- Document object module. 
