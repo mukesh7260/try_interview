@@ -533,3 +533,74 @@ while n > 0 :
     sum = sum * 10 + r 
     n = n // 10 
 print(sum)
+
+
+
+a = [i for i in range(10) if i % 2 == 0] 
+print(a)  
+
+
+
+a = list(filter(lambda i: i % 2 == 0, range(10))) # very important concept 
+print(a)
+
+
+# lambda function use for only short task and one line expression and not call lambda function anywhere as like def 
+
+# Use lambda when you need a quick function for a small task — and don’t want to define a whole def block.
+# A lambda function is an anonymous (unnamed) function that you define in one line. It can take any number of arguments but only has one expression.
+# When not to use lambda:
+
+# If the function is complex or has multiple lines → use def
+
+# If you need to reuse the function in multiple places
+
+
+
+
+
+
+with open("/home/mukesh/try/try.txt", "w") as f:
+    content = f.write("mukesh kumar full stack developer  ")
+    
+with open("/home/mukesh/try/try.txt", "r") as f:
+    content = f.read()
+    print(content)
+
+
+
+
+
+
+user_input = input("Enter text to save in file: ")
+with open("/home/mukesh/try/try.txt", "w") as f:
+    f.write(user_input)
+print("Data written to try.txt successfully.")
+
+
+print("Enter multiple lines (type 'exit' to stop):")
+with open("/home/mukesh/try/try.txt", "w") as f:
+    while True:
+        line = input()
+        if line.lower() == 'exit':
+            break
+        f.write(line + '\n')
+
+print("All lines saved to file.")
+
+
+
+
+
+# Best factorial example in python 
+
+n = int(input('Enter any number ! ')) 
+if n < 0:
+    print('Factorial is not defined for negative numbers')
+elif n == 0 or n == 1:
+    print(1) 
+else:
+    fact = 1
+    for i in range(2, n + 1):
+        fact = fact * i
+    print(f'Factorial of {n} is : {fact}')
