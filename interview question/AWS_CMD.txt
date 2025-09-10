@@ -1,0 +1,12 @@
+			# AWS COMMAND 
+1. ec2-user : - for use login
+2. clear
+
+		# chmode command for linux
+1. chmod 777 file_name
+2. chmod 755 file_name
+3. chmod g=r,u=wx,o=rw file_name
+4. chmod u=x,g=wx,o=rx file_name
+5. chmod u+w,g-r,o+wx file_name
+6. chown user_name file_name
+7. chgrp group_name file_name

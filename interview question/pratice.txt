@@ -1,0 +1,21 @@
+def validate(self, **value):
+	user authenticate(**data)
+	if user:
+		user.is_active()
+		return user
+	raise exception.authenticationFailed('status is not activ')
+
+
+txpedjmbsaxlirki , smtp gmail password
+
+
+def validate(self, data):
+	if math_marks>= 90:
+		raise serializers.ValidationError("marks greater than equal to 90")
+	return data
+
+def validate(self, data):
+	stat = data.get["status"]
+	if stat != True:
+		raise serializers.ValidationError("status is not active")
+	return data

@@ -1,0 +1,142 @@
+Q. what is coockies ?
+ans: - A cookie is a small piece of text data set by Web serve or web browser  that resided on the client’s machine. 
+
+Q. what is session ? 
+ans: - Session stores and retrieve arbitrary data (user input-> file content , text data , number. file content , network communication , dynamic data these all are arbitrary data.) It stores data on the server side and abstracts the sending and receiving of cookies. Cookies contain a session ID – not the data itself
+
+Q. what is signal ??? 
+ans: - signal get notify or inform  when any action occour. signals allow certain senders to notify a set of receivers that some action has taken place.  They’re especially useful when many pieces of code may be interested in the same events.
+
+signal contain four parameter 1. receiver 2. sender 3.weak , when weak = false then we call the signal connect method. 4. dispatch_uid 
+
+Login and Logout Signals
+Model Signals
+Management Signals
+Request/Response Signals
+Test Signals
+Database Wrappers
+
+Q. what is middleware in django ??
+ans : - middleware is a framework that who operates django request and response b/w views & url python file. 
+
+It contains two method 
+. __init__() method :- initialize middleware 
+. __call__() method : 
+
+class MyMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+        # One-time configuration and initialization.
+    def __call__(self, request):
+        # Code to be executed for each request before the view (and later middleware) are called.
+        response = self.get_response(request)
+        # Code to be executed for each request/response after the view is called.
+        return response
+
+Q. what is salary in django ???
+ans:- Celery is an open-source Python library which is used to run the tasks asynchronously. It is a task queue that holds the tasks and distributes them to the workers in a proper manner. It is primarily focused on real-time operation but also supports scheduling 
+
+
+Q. whait is redis ??
+ans: - Redis is an in-memory database that can be used for caching. To begin you’ll need a Redis server running either locally or on a remote machine.
+
+Q. what is logger ??
+ans:- logger is a debugging tools . 
+ 
+
+Q. How to make custom middleware in django ??
+ans:-  middleware is a way to process requests and responses globally before they reach the view or after they leave the view. Middleware components can be used for a variety of tasks such as authentication, security, logging, modifying headers, and more. You can create custom middleware to add your own functionality to the request-response cycle.
+
+
+first of all we create middleware python file . In this file we create class middleware or function based middleware . middleware contain two method __init__ & call method . define both method. here. middleware class will have to attach in setting.py in middleware section. in this way we made custome middleware in django. 
+
+Q. how many types of permission classes in django ?
+ans: - AllowAny , IsAuthenticated , IsAdminUser , IsAuthenticatedOrReadOnly, IsAuthenticatedOrAdminUser , IsAuthenticatedOrReadOnlyOrAdminUser , IsAuthenticatedOrOwner , DjangoModelPermissions , DjangoModelPermissionsOrAnonReadOnly , DjangoObjectPermissions , CustomPermission
+
+Q. How do make custom permission in django ??
+ans:- To create a custom permission in Django, you need to define a class that subclasses django.contrib.auth.base.BasePermission and implement your own logic for checking whether a user has the required permission. 
+
+from rest_framework import permissions
+
+class CustomPermission(permissions.BasePermission):
+    def has_permission(self, request, view):
+        # Implement your permission logic here
+        # Return True if the user has permission, otherwise False
+        return request.user.is_authenticated and request.user.has_special_permission
+
+
+Q. Main difference b/w select_related and pre_fetched related in django ???
+ans: - Use select_related for optimizing ForeignKey and OneToOneField relationships by performing a SQL join in a single query.
+
+Use prefetch_related for optimizing many-to-many and reverse ForeignKey relationships by fetching related objects using separate queries and then merging the data in Python.
+
+Q. Main difference b/w get & filter ??
+ans:
+get():- if query does not match then its occour error 
+filter():- if query does not matching then it's return empty queryset in the form of list  . 
+
+Q. Difference b/w aggrirate & annotate funtion in django orm ??
+ans:- 
+
+total_sales = Order.objects.aggregate(total_sales=Sum('amount'))
+
+orders = Order.objects.annotate(total_amount=F('amount') + F('tax'))
+
+aggregate(): Calculates aggregate values for the entire queryset and returns a dictionary of calculated values.
+
+annotate(): Adds new fields to each object in the queryset, where the values of the new fields are based on aggregate calculations. It doesn't reduce the queryset to a single value
+
+Q. what is api ??
+ans: - api means application programming interface which work basically request & response among user and application or application to application. 
+
+Q what is rest api ???
+ans : - REST API means representational state transfer , statelessness is key . An api can be rest if it follows the below terms & conditions : 
+
+1. uniform interface 
+2. stateless
+3. cacheable
+4. clent-server
+5. layered system 
+6. code on demand 
+
+1. uniform interface : - The uniform interface constraint defines the interfacae between client and servers in the form of these terms . 
+first constsraint of the REST API state that the client and server has to communicate and agree to certain rules based on resources (like json, xml , html, txt)and with proper encoding like UTF-8 exctra. 
+
+2. stateless : - api in rest are stateless and client and server does not worry about the state of request and response. 
+
+3. cacheable: - 
+
+												### difference b/w select related & prefetch related 
+
+
+Key Differences:
+
+Functionality:
+
+select_related:
+Performs a single SQL query with JOIN operations to fetch the main object and its related objects in one go.
+Works best for fetching a single object or a small set of objects with a limited number of related objects.
+prefetch_related:
+Executes the initial query for the main objects.
+Issues separate, more efficient SQL queries for each relationship specified in prefetch_related.
+Joins the related objects in Python memory.
+Suitable for fetching a larger set of objects, especially when dealing with many-to-many relationships.
+Relationship Types:
+
+select_related:
+Primarily used with ForeignKey relationships (one-to-one or one-to-many).
+Not recommended for ManyToManyField relationships (many-to-many) due to potential performance issues with large datasets.
+prefetch_related:
+Can be used with both ForeignKey and ManyToManyField relationships.
+Choosing the Right Technique:
+
+Here's a general guideline to help you decide:
+
+Use select_related when:
+You need to fetch a single object or a small set of objects.
+The related objects are limited in number.
+You're dealing with ForeignKey relationships.
+Use prefetch_related when:
+You need to fetch a larger set of objects.
+You have ForeignKey or ManyToManyField relationships.
+You want to avoid potential performance issues with select_related on large datasets.

@@ -1,0 +1,24 @@
+class component is also called statefull because class component use state . 
+
+Q. what is component ?
+ans: - a peace of code . we can reuse anywhere and it's independent and it's save time a lot. 
+
+=> function component is stateless becauze it's can not use state. 
+
+Q what is jsx ? 
+ans : - java scripts xml. 
+
+=> we can not write html code inside java script tag. 
+
+=> without jsx we write React.createElement('h1', {className:'head-tag'},'hello-jsx)
+
+Q. what is prop ? 
+ans : - data transfer from parents to child or siblings ie called prop. for use dynamics data transfer we use props. or data transfer from one component to another component . 
+
+Q. what is state ? 
+ans : -  a built-in React object that is used to contain data or information about the component.  A component's state can change over time; whenever it changes, the component re-renders
+
+=> this.prop used in class component   always . 
+
+Q what is usestate in react ? 
+ans : - useState is a React Hook that lets you add a state variable to your component. const [state, setState] = useState(initialState)

@@ -1,0 +1,3 @@
+Q. what is chart interface ??
+ans : - chart interface means formation or data shown in the form of graph ie static graph value should be dynamic . There are many types of chart interface like 1.  bar chat means data should show on horizontally or vertically . 2. Lines & curve chart interface UI : - data shown in the form of lines as well as curve . 3 . pie & donuts chart interface : - pie & donuts chart interface show data in the form of circle . 
+4. Map chart : - map chart data shown on geographically loacation 

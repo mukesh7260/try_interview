@@ -1,0 +1,168 @@
+   
+	sudo service mysql start  :- first command run.        
+   	user id : - root
+   	password: - mynewpassword
+
+
+
+---------------  MYSQL QUERY -------------------
+
+create database youtubestu;
+drop database youtubestu; 
+use youtubestu; 
+select database();  ------- current select database. 
+
+## There are three data type in mysql. 
+
+1. Numeric 
+2. String 
+3. Date & Time
+
+create table student ( name varchar(55), age int); 
+show tables;  
+desc student;  
+drop table student; 
+
+insert into students( id , name, class) values(1,'mukesh', 12); 
+insert into students values(2,'kumar',14); 
+select * from students;
+insert into students (id, name, class) values ( 'mouse', 'ppppp',13);   
+show warnings;    
+
+Null :- The value is not known in sql
+create table stuef(id not null default 0, name varchar(55) not null default 'unnamed');   
+insert into stuef() values();     
+alter table stuef ADD class int;     
+alter table stuef drop column class;   ---- delete column field. 
+
+
+			Primary Key: 
+
+-> The primary key constraint uniquely identified each record in a table .
+-> Primary keys must contain unique values and can not contain Null values.
+
+create table stud_unique( stu_id int not null , name varchar(55), age int,  primary key (stu_id) );     
+
+			Auto Increament : 
+
+Auto increment allows a unique number to be generated automatically when a new record is inserted into a table. 
+
+create table stud_auto( stu_id int not null AUTO_INCREMENT , name varchar(55), age int,  primary key (stu_id) ); 
+
+create table student (id int not null auto_increment, fname varchar(44), lname varchar(55) , age int , primary key(id));   
+
+insert into student (fname, lname, age) values('llll', 'kkkk',23),('www','qqqq',34); 
+
+			where clouse. 
+
+-> It is used for filter data or record.
+select * from student where age = 23;    
+
+			update means  .
+
+modify the record or data from table. 
+update table_name set column_name where column_name or id = 1;
+
+update student set age = 25 where fname = 'llll';     
+   
+delete from student where id = 1; 
+
+			distinct means :- uniques value.
+The select distinct statement is used to return only distinct (different) values. 
+select distinct fname from student;    
+ 
+			order by : - shorting from assecending or desecending or randomly. 
+select age from student order by age; 
+select distinct age from student order by age;    
+select age from student order by age desc;    
+      
+			LIMIT IN SQL. 
+select age from student order by age limit 3; 
+
+			like operator in sql. 
+The LIKE operators is used in a where clause to search for a specified pattern in a column. 
+
+select fname from student where fname like '%w%';   
+
+			Aggrigrate function in sql. 
+Aggrigrate function : - It performs calculation on a set of value and return a single result. 
+
+max, min, count , avg & sum. 
+
+select max(age) from student;    
+select min(age) from student; 
+select sum(age) from student;   
+select count(id) from student;        
+select avg(age) from student;
+
+			logical operator in sql. 
+It returns only true or false. 
+
+select * from student where age !=25;    
+select * from student where age > 25;  
+select * from student where age > 25 OR age < 29;    
+select * from student where age between 22 and 25;  
+select * from student where age <=25 && age>=25;  
+select * from student where fname in('www');  
+
+			MYSQL STRING FUNCTION. 
+select concat('www',' ' , 'lname');  
+select concat(fname,' ' , lname) from student as fullname;               
+select reverse('mukesh');   
+select concat('mukesh', reverse('mukesh')) as palindrom;                                  
+select char_length('mukesh');      
+select upper('mukesh');   
+
+			date time in sql. 
+create table datestu( name varchar(55), dob date, dot time, bt datetime);      
+insert into datestu values('mukesh', '1996-01-15' , '6:15:24', '1996-01-15 6:15:24');          
+insert into datestu values('mukesh', curdate(),curtime(),now()); 
+      
+			FOREIGN KEY . 
+
+A foreign key is a key used to link two tables together . 
+A foreign key is a field (or collection of fields) in one table refers to the primary key in another table.
+
+create table customers(cid int not null auto_increment primary key, cname varchar(55), email varchar(44));  
+
+create table orders(oid int not null auto_increment primary key,orderdate date , cid int, foreign key(cid) references customers(cid)); 
+
+			SQL JOINING
+select * from customers,orders where customers.cid=orders.cid;   ## adding two table. 
+
+select * from customers inner join orders ON customers.cid = orders.cid;    -- inner  join.   
+
+select * from customers left join orders ON customers.cid = orders.cid;     -- left join.            
+    
+select * from customers right join orders ON customers.cid = orders.cid;     -- right join.   
+
+	here  customers = 1st table, orders = 2nd table. 
+
+  
+     			#### Gropu by: - 
+The group by command is used to group the result set(used with aggregate function: count, max, min, sum , avg).
+
+select count(id), fname , lname from students group by lname;
+
+
+Group by defintion : - used to collect data from multiple records and group the result by one or more column.
+
+syntax :- SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s);
+
+	######### table created or not use this commad . 
+SHOW TABLES LIKE 'table_name';
+
+
+			###### INDEXING IN MYSQL. 
+create index index_name on table_name(column1, column2, column3...);
+show index from table_name;
+drop index index_name on table_name;
+
+		########## imp. notes 
+
+-> sql command yadi commit ho gya then rollback nahi hota h. :- care it. 
+:- rollback & commit command works for only three command  insert , update & delete. 
+
