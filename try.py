@@ -604,3 +604,11 @@ else:
     for i in range(2, n + 1):
         fact = fact * i
     print(f'Factorial of {n} is : {fact}')
+
+
+
+
+user_input = input("Enter text to save in file: ")
+with open("E:/try/try.txt", "w") as f:
+    f.write(user_input)
+print("Data written to try.txt successfully.") 
