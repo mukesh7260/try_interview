@@ -1,103 +1,50 @@
-l = lambda : [i for i in range(10) if i % 2 == 0] 
-print(l()) 
 
-l = lambda a , b : a * b
-print(l(2,3))
+# Summary Table
+# Feature	Shallow Copy	Deep Copy
+# Copies outer object?	✅ Yes	✅ Yes
+# Copies inner objects?	❌ No (same references)	✅ Yes (new objects)
+# Module used	copy.copy()	copy.deepcopy()
+# Use case	When nested objects are not being modified independently	When full independence is needed 
 
+import copy 
+original = [[1, 2], [3, 4]]
+shallow = copy.copy(original) 
+print(shallow)  
+print(shallow)
+print(original is shallow)  # False, different objects are created
 
-l = lambda : print('hello') 
-print(l()) 
+# Modify the inner list
+shallow[0][0] = 100
 
+print("Original:", original)
+print("Shallow Copy:", shallow)
+# output : 
 
-# Syntax of a lambda function:
-# lambda arguments: expression
-# example of lambda function  
-# No arguments: 
-
-l = lambda : [i for i in range(10) if i % 2 == 0]
-print(l())  # ➜ [0, 2, 4, 6, 8]
-
-# With arguments: 
-
-l = lambda a, b: a * b # here a , b is the argument of lamda function 
-print(l(2, 3))  # ➜ 6
-
-# ❗ Why : is required
-# Because Python's lambda is an expression, not a block like a normal function, you need a clear delimiter between:
-# Arguments: what goes into the lambda
-# Expression body: the single expression that gets evaluated and returned
-# The : does that.
+# Original: [[100, 2], [3, 4]]
+# Shallow Copy: [[100, 2], [3, 4]]
 
 
-# ✅ With no arguments:
-say_hello = lambda: "Hello"
-print(say_hello())  # ➜ Hello
+# Deep copy example 
 
-# ✅ With one argument: 
-
-square = lambda x: x ** 2
-print(square(4))  # ➜ 16 
-
-# ✅ With a conditional expression:/
-
-max_val = lambda a, b: a if a > b else b
-print(max_val(10, 20))  # ➜ 20 
-
-# ✅ When to Use Lambda
-# When you need a small, throwaway function
-# When passing a function as an argument (e.g. sorted, map, filter)
-# For one-liners 
-# ❌ When not to use lambda:
-# When the function logic is complex
-# When you need multiple lines
-# When readability matters more
+# original = [[1, 2], [3, 4]]
+# deep = copy.deepcopy(original) 
+# print(deep) 
+# print(original)
+# print(original is deep) 
 
 
+# # Modify the inner list
+# deep[0][0] = 100
 
-# 1. map() + lambda
-# 🔹 Purpose: Apply a function to each item in a list.
+# print("Original:", original)
+# print("Deep Copy:", deep) # Now, modifying the inner list of the copy does not affect the original.
 
-nums = [1, 2, 3, 4, 5]
-squares = list(map(lambda x: x ** 2, nums))
-print(squares) 
-
-# ✅ 2. filter() + lambda
-# 🔹 Purpose: Filter a list based on a condition. 
-
-nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-evens = list(filter(lambda x: x % 2 == 0, nums))
-print(evens) 
+# output :
+# Original: [[1, 2], [3, 4]]
+# Deep Copy: [[100, 2], [3, 4]] 
 
 
-# ✅ 3. sorted() + lambda
-# 🔹 Purpose: Sort a list of items by a custom key. 
-
-people = [
-    {"name": "Alice", "age": 30},
-    {"name": "Bob", "age": 25},
-    {"name": "Charlie", "age": 35}
-]
-
-# Sort by age
-sorted_people = sorted(people, key=lambda person: person["age"])
-print(sorted_people)
-
-
-# output : - 
-
-[
-    {'name': 'Bob', 'age': 25},
-    {'name': 'Alice', 'age': 30},
-    {'name': 'Charlie', 'age': 35}
-] 
-
-
-# ✅ Bonus: lambda in reduce() (needs functools)
-# 🔹 Purpose: Reduce a list to a single value
-
-
-from functools import reduce
-
-nums = [1, 2, 3, 4, 5]
-product = reduce(lambda x, y: x * y, nums)
-print(product)
+# important point : - deep copy independent form original list but shallow copy is not independent from original list.
+# shallow copy is used when nested objects are not being modified independently, while deep copy is used
+# when full independence is needed.
+# shallow copy is faster than deep copy because it does not create new objects for inner elements.
