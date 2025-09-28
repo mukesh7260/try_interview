@@ -870,3 +870,6 @@ print("Deep Copy:", deep) # Now, modifying the inner list of the copy does not a
 # shallow copy is used when nested objects are not being modified independently, while deep copy is used
 # when full independence is needed.
 # shallow copy is faster than deep copy because it does not create new objects for inner elements.
+
+
+# .classname then enter and #idname then enter so , it will make new div with class and id name . 
