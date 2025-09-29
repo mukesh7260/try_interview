@@ -5,7 +5,7 @@
 # Copies inner objects?	❌ No (same references)	✅ Yes (new objects)
 # Module used	copy.copy()	copy.deepcopy()
 # Use case	When nested objects are not being modified independently	When full independence is needed 
-
+#
 import copy 
 original = [[1, 2], [3, 4]]
 shallow = copy.copy(original) 
