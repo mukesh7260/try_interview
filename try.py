@@ -278,6 +278,7 @@ class Laptop(Computer):
 l = Laptop()
 l.abc()
 l.abcd()
+# Prime number b/w 1 to 1001
 
 count = 0 
 for i in range(1,1000):
@@ -669,6 +670,24 @@ print(l)
 
 
 
+# or 
+
+
+l = [[54, 233, 21, 19], [12, 45,6, 637, 89], [90, 34, 233, 12,7]]
+
+# Sort each sublist using inline bubble sort (no function)
+for arr in l:  # arr = [54, 233, 21, 19] store one by one
+    n = len(arr)
+    print(n)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                # Swap
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+print(l)
+
+
 
 # Methood overloading examle in python 
 
@@ -873,3 +892,9 @@ print("Deep Copy:", deep) # Now, modifying the inner list of the copy does not a
 
 
 # .classname then enter and #idname then enter so , it will make new div with class and id name . 
+
+
+
+
+l = lambda : [i for i in range(10) if i % 2 == 0] # hare no argument only expression
+print(l())
