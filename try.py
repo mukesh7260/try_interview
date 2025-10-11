@@ -896,6 +896,43 @@ print("Deep Copy:", deep) # Now, modifying the inner list of the copy does not a
 
 
 
+
+✅ Shallow Copy
+
+# Creates a new object, but does not create copies of nested objects.
+
+# Instead, it copies references to the original nested objects.
+
+# So, changes to nested objects in the copy will affect the original.
+
+
+import copy
+
+original = [[1, 2], [3, 4]]
+shallow = copy.copy(original)
+shallow[0][0] = 99
+print(original)  # [[99, 2], [3, 4]] → affected!
+
+
+
+
+
+✅ Deep Copy
+
+# Creates a new object, and recursively copies all nested objects.
+# So, the copy is completely independent of the original.
+# Changes in the copy won’t affect the original.
+
+
+import copy
+
+original = [[1, 2], [3, 4]]
+deep = copy.deepcopy(original)
+deep[0][0] = 99
+print(original)  # [[1, 2], [3, 4]] → safe!
+
+
+
 l = lambda : [i for i in range(10) if i % 2 == 0] # hare no argument only expression
 print(l())
 
