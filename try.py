@@ -526,7 +526,7 @@ for i in range(n+1):
 
 
 
-
+ # reverse number and palindrom 
 n = 3456432 
 sum = 0 
 while n > 0 :
@@ -998,3 +998,21 @@ print(s1.sum(7))       # Output: 7
 
 s2 = Summation()
 print(s2.sum(1, 2, 3)) # Output: 6 (no init values, uses method args)
+
+
+
+
+# armstrong number example 
+
+
+n = int(input('Ente any number :  ')) 
+arg_num = n 
+sum = 0 
+while n > 0:
+    r = n % 10 
+    sum = sum + r ** 3
+    n = n // 10
+if sum == arg_num:
+    print(arg_num, 'is an Armstrong number')
+else:
+    print(arg_num, 'is not an Armstrong number') 
