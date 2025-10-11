@@ -1016,3 +1016,13 @@ if sum == arg_num:
     print(arg_num, 'is an Armstrong number')
 else:
     print(arg_num, 'is not an Armstrong number') 
+
+
+
+s = "patna is very beautiful place"
+b = s[::-1]
+c = b.title()
+d = c[::-1]
+print(d)
+
+# output : patnA iS verY beautifuL placE
