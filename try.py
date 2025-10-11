@@ -897,7 +897,7 @@ print("Deep Copy:", deep) # Now, modifying the inner list of the copy does not a
 
 
 
-✅ Shallow Copy
+#✅ Shallow Copy
 
 # Creates a new object, but does not create copies of nested objects.
 
@@ -917,7 +917,7 @@ print(original)  # [[99, 2], [3, 4]] → affected!
 
 
 
-✅ Deep Copy
+#✅ Deep Copy
 
 # Creates a new object, and recursively copies all nested objects.
 # So, the copy is completely independent of the original.
