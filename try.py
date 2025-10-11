@@ -898,3 +898,14 @@ print("Deep Copy:", deep) # Now, modifying the inner list of the copy does not a
 
 l = lambda : [i for i in range(10) if i % 2 == 0] # hare no argument only expression
 print(l())
+
+ 
+l = lambda a, b, c: a if a > b and a > c else (b if b > c else c)
+print(l(3, 5, 9))  # Output: 9
+
+
+
+# turnary operator : - 
+
+a = 20 if 20 > 10 else 10 
+print(a)

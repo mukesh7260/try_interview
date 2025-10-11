@@ -1,0 +1,110 @@
+CREATE TABLE departments (
+    id INT PRIMARY KEY,
+    department_name VARCHAR(100)
+);
+
+
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+
+
+
+-- First insert departments with the IDs you'll reference
+INSERT INTO departments (id, department_name) VALUES
+(101, 'HR'),
+(201, 'Engineering'),
+(301, 'Finance'),
+(401, 'Marketing');
+
+
+
+
+INSERT INTO employees (id, name, department_id) VALUES
+(1, 'Alice', 101),
+(2, 'Bob', 201),
+(3, 'Charlie', 401),
+(4, 'David', 301);
+
+
+
+✅ LEFT JOIN Syntax (MySQL):
+
+
+SELECT 
+    employees.id AS employee_id,
+    employees.name AS employee_name,
+    employees.department_id,
+    departments.department_name
+FROM 
+    employees
+LEFT JOIN 
+    departments
+ON 
+    employees.department_id = departments.id;
+
+
+
+mysql> SELECT * FROM departments;
++-----+-----------------+
+| id  | department_name |
++-----+-----------------+
+|   1 | HR              |
+|   2 | Engineering     |
+| 101 | HR              |
+| 201 | Engineering     |
+| 301 | Finance         |
+| 401 | Marketing       |
++-----+-----------------+
+
+
+
+mysql> SELECT * FROM employees;
++----+---------+---------------+
+| id | name    | department_id |
++----+---------+---------------+
+|  1 | Alice   |           101 |
+|  2 | Bob     |           201 |
+|  3 | Charlie |           401 |
+|  4 | David   |           301 |
++----+---------+---------------+
+4 rows in set (0.00 sec)
+
+
+
+
+ employees.department_id = departments.id;
++-------------+---------------+---------------+-----------------+
+| employee_id | employee_name | department_id | department_name |
++-------------+---------------+---------------+-----------------+
+|           1 | Alice         |           101 | HR              |
+|           2 | Bob           |           201 | Engineering     |
+|           3 | Charlie       |           401 | Marketing       |
+|           4 | David         |           301 | Finance         |
++-------------+---------------+---------------+-----------------+
+
+
+Example: Delete employees and departments tables
+
+DROP TABLE employees;
+DROP TABLE departments;
+
+⚠️ Warning: This will permanently delete the tables and all their data. This action cannot be undone.
+
+
+💡 If you want to delete only the data but keep the table structure, use:
+
+DELETE FROM employees;
+DELETE FROM departments;
+
+
+Or to completely empty the tables (and reset auto-increment):
+
+TRUNCATE TABLE employees;
+TRUNCATE TABLE departments;
+
+Let me know if you want help recreating the tables after deletion.
