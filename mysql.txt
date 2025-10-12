@@ -1,110 +1,219 @@
-CREATE TABLE departments (
-    id INT PRIMARY KEY,
-    department_name VARCHAR(100)
-);
+ create table student(student_id int , name varchar(12));
+
+insert into student values(101 , "mukesh");
+
+mysql> select * from student;
++------------+-----------+
+| student_id | name      |
++------------+-----------+
+|        101 | mukesh    |
+|        102 | Rishikesh |
+|        103 | Kumar     |
++------------+-----------+
 
 
 
-CREATE TABLE employees (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    department_id INT,
-    FOREIGN KEY (department_id) REFERENCES departments(id)
-);
+mysql> select * from course;
++-----------+-------------+
+| course_id | course_name |
++-----------+-------------+
+|       101 | CSE         |
+|       107 | EEE         |
+|       103 | CIVIL       |
+|       107 | MECH        |
++-----------+-------------+
+
+
+# INNER JOIN 
+
+ select * from student inner join course on student.student_id = course_id;
 
 
 
--- First insert departments with the IDs you'll reference
-INSERT INTO departments (id, department_name) VALUES
-(101, 'HR'),
-(201, 'Engineering'),
-(301, 'Finance'),
-(401, 'Marketing');
+ mysql> select * from student inner join course on student.student_id = course_id;
++------------+--------+-----------+-------------+
+| student_id | name   | course_id | course_name |
++------------+--------+-----------+-------------+
+|        101 | mukesh |       101 | CSE         |
+|        103 | Kumar  |       103 | CIVIL       |
++------------+--------+-----------+-------------+ 
 
 
+# LEFT JOIN 
+
+mysql> select * from student left join course on student.student_id = course.course_id;
++------------+-----------+-----------+-------------+
+| student_id | name      | course_id | course_name |
++------------+-----------+-----------+-------------+
+|        101 | mukesh    |       101 | CSE         |
+|        102 | Rishikesh |      NULL | NULL        |
+|        103 | Kumar     |       103 | CIVIL       |
++------------+-----------+-----------+-------------+
 
 
-INSERT INTO employees (id, name, department_id) VALUES
-(1, 'Alice', 101),
-(2, 'Bob', 201),
-(3, 'Charlie', 401),
-(4, 'David', 301);
+# RIGHT JOIN 
+
+mysql> select * from student right join course on student.name = course_name;
++------------+------+-----------+-------------+
+| student_id | name | course_id | course_name |
++------------+------+-----------+-------------+
+|       NULL | NULL |       101 | CSE         |
+|       NULL | NULL |       107 | EEE         |
+|       NULL | NULL |       103 | CIVIL       |
+|       NULL | NULL |       107 | MECH        |
++------------+------+-----------+-------------+
 
 
-
-✅ LEFT JOIN Syntax (MySQL):
-
-
-SELECT 
-    employees.id AS employee_id,
-    employees.name AS employee_name,
-    employees.department_id,
-    departments.department_name
-FROM 
-    employees
-LEFT JOIN 
-    departments
-ON 
-    employees.department_id = departments.id;
+or 
 
 
-
-mysql> SELECT * FROM departments;
-+-----+-----------------+
-| id  | department_name |
-+-----+-----------------+
-|   1 | HR              |
-|   2 | Engineering     |
-| 101 | HR              |
-| 201 | Engineering     |
-| 301 | Finance         |
-| 401 | Marketing       |
-+-----+-----------------+
-
-
-
-mysql> SELECT * FROM employees;
-+----+---------+---------------+
-| id | name    | department_id |
-+----+---------+---------------+
-|  1 | Alice   |           101 |
-|  2 | Bob     |           201 |
-|  3 | Charlie |           401 |
-|  4 | David   |           301 |
-+----+---------+---------------+
+mysql> select * from student right join course on student.student_id = course.course_id;
++------------+--------+-----------+-------------+
+| student_id | name   | course_id | course_name |
++------------+--------+-----------+-------------+
+|        101 | mukesh |       101 | CSE         |
+|       NULL | NULL   |       107 | EEE         |
+|        103 | Kumar  |       103 | CIVIL       |
+|       NULL | NULL   |       107 | MECH        |
++------------+--------+-----------+-------------+
 4 rows in set (0.00 sec)
 
 
 
 
- employees.department_id = departments.id;
-+-------------+---------------+---------------+-----------------+
-| employee_id | employee_name | department_id | department_name |
-+-------------+---------------+---------------+-----------------+
-|           1 | Alice         |           101 | HR              |
-|           2 | Bob           |           201 | Engineering     |
-|           3 | Charlie       |           401 | Marketing       |
-|           4 | David         |           301 | Finance         |
-+-------------+---------------+---------------+-----------------+
+# FULL JOIN OR FULL OUTER JOIN 
+
+mysql> SELECT *
+    -> FROM student
+    -> LEFT JOIN course ON student.student_id = course.course_id
+    ->
+    -> UNION
+    ->
+    -> SELECT *
+    -> FROM student
+    -> RIGHT JOIN course ON student.student_id = course.course_id;
++------------+-----------+-----------+-------------+
+| student_id | name      | course_id | course_name |
++------------+-----------+-----------+-------------+
+|        101 | mukesh    |       101 | CSE         |
+|        102 | Rishikesh |      NULL | NULL        |
+|        103 | Kumar     |       103 | CIVIL       |
+|       NULL | NULL      |       107 | EEE         |
+|       NULL | NULL      |       107 | MECH        |
++------------+-----------+-----------+-------------+ 
+
+EXAMPLE : 
+Table A : - a,b,c;
+Table B : - c,d,e
+
+A inner B : - c only , matching value will be come . 
+
+A left B : - a , b ,c , c
+
+A right B : - c , d, e, c  
+
+A outer B : a,b,c,d,e 
 
 
-Example: Delete employees and departments tables
-
-DROP TABLE employees;
-DROP TABLE departments;
-
-⚠️ Warning: This will permanently delete the tables and all their data. This action cannot be undone.
 
 
-💡 If you want to delete only the data but keep the table structure, use:
+ # Left Exclusive Join 
 
-DELETE FROM employees;
-DELETE FROM departments;
+ mysql> select * from student;
++------------+-----------+
+| student_id | name      |
++------------+-----------+
+|        101 | mukesh    |
+|        102 | Rishikesh |
+|        103 | Kumar     |
++------------+-----------+
 
 
-Or to completely empty the tables (and reset auto-increment):
+mysql> select * from course;
++-----------+-------------+
+| course_id | course_name |
++-----------+-------------+
+|       101 | CSE         |
+|       107 | EEE         |
+|       103 | CIVIL       |
+|       107 | MECH        |
++-----------+-------------+
+4 rows in set (0.00 sec)
 
-TRUNCATE TABLE employees;
-TRUNCATE TABLE departments;
 
-Let me know if you want help recreating the tables after deletion.
+mysql> select * from student left join course on student.student_id = course.course_id where course.course_id is null;
++------------+-----------+-----------+-------------+
+| student_id | name      | course_id | course_name |
++------------+-----------+-----------+-------------+
+|        102 | Rishikesh |      NULL | NULL        |
++------------+-----------+-----------+-------------+
+
+
+# Right Exclusive JOin 
+
+mysql> select * from student right join course on student.student_id = course.course_id where course.course_id is null;
+Empty set (0.00 sec)
+
+mysql> select * from student right join course on student.student_id = course.course_id where student.student_id is null;
++------------+------+-----------+-------------+
+| student_id | name | course_id | course_name |
++------------+------+-----------+-------------+
+|       NULL | NULL |       107 | EEE         |
+|       NULL | NULL |       107 | MECH        |
++------------+------+-----------+-------------+
+2 rows in set (0.00 sec)
+
+
+# mysql> select * from student;
++------------+-----------+
+| student_id | name      |
++------------+-----------+
+|        101 | mukesh    |
+|        102 | Rishikesh |
+|        103 | Kumar     |
+|        110 | Rajveer   |
++------------+-----------+
+
+mysql> SELECT * FROM student LEFT JOIN course ON student.student_id = course.course_id WHERE course.course_id IS NULL  UNION   SELECT * FROM student RIGHT JOIN course ON student.student_id = course.course_id WHERE student.student_id IS NULL;
++------------+-----------+-----------+-------------+
+| student_id | name      | course_id | course_name |
++------------+-----------+-----------+-------------+
+|        102 | Rishikesh |      NULL | NULL        |
+|        110 | Rajveer   |      NULL | NULL        |
+|       NULL | NULL      |       107 | EEE         |
+|       NULL | NULL      |       107 | MECH        |
++------------+-----------+-----------+-------------+
+
+
+
+# self join 
+
+mysql> select * from employee;
++-----+---------+-----------+
+| id  | name    | manage_id |
++-----+---------+-----------+
+| 101 | ramesh  |       103 |
+| 102 | ramesha |       102 |
+| 103 | rameshk |      NULL |
+| 104 | rameshk |       201 |
++-----+---------+-----------+
+
+
+mysql> select * from employee as a join employee as b on a.id = b.manage_id;
++-----+---------+-----------+-----+---------+-----------+
+| id  | name    | manage_id | id  | name    | manage_id |
++-----+---------+-----------+-----+---------+-----------+
+| 103 | rameshk |      NULL | 101 | ramesh  |       103 |
+| 102 | ramesha |       102 | 102 | ramesha |       102 |
++-----+---------+-----------+-----+---------+-----------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> select a.name,b.name from employee as a join employee as b on a.id = b.manage_id;
++---------+---------+
+| name    | name    |
++---------+---------+
+| rameshk | ramesh  |
+| ramesha | ramesha |
++---------+---------+
