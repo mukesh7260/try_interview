@@ -74,10 +74,10 @@ select distinct fname from student;
 			order by : - shorting from assecending or desecending or randomly. 
 select age from student order by age; 
 select distinct age from student order by age;    
-select age from student order by age desc;    
+select age from student order by age desc;    # asc
       
 			LIMIT IN SQL. 
-select age from student order by age limit 3; 
+select age from student order by age limit 3;  # : - it will return 3 data . 
 
 			like operator in sql. 
 The LIKE operators is used in a where clause to search for a specified pattern in a column. 

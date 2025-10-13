@@ -216,4 +216,435 @@ mysql> select a.name,b.name from employee as a join employee as b on a.id = b.ma
 +---------+---------+
 | rameshk | ramesh  |
 | ramesha | ramesha |
-+---------+---------+
++---------+---------+   
+
+
+
+select distinct from city student; # duplicate value will remove 
+
+ 
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | A     |
+| 102 | pune      |   484 | rishikesh | A     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | A     |
++-----+-----------+-------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student_record limit 3;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | A     |
+| 102 | pune      |   484 | rishikesh | A     |
+| 103 | Bengaluru |   450 | patel     | A+    |
++-----+-----------+-------+-----------+-------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> select distinct city from student_record;
++-----------+
+| city      |
++-----------+
+| pune      |
+| Bengaluru |
+| patna     |
+| Mumbai    |
++-----------+
+
+mysql> select city from student_record group by city;
++-----------+
+| city      |
++-----------+
+| pune      |
+| Bengaluru |
+| patna     |
+| Mumbai    |
++-----------+
+
+
+
+mysql> select city , count(name) from student_record group by city;
++-----------+-------------+
+| city      | count(name) |
++-----------+-------------+
+| pune      |           2 |
+| Bengaluru |           1 |
+| patna     |           1 |
+| Mumbai    |           1 |
++-----------+-------------+
+
+
+
+mysql> select city , name , count(name) from student_record group by city , name;
++-----------+-----------+-------------+
+| city      | name      | count(name) |
++-----------+-----------+-------------+
+| pune      | mukesh    |           1 |
+| pune      | rishikesh |           1 |
+| Bengaluru | patel     |           1 |
+| patna     | Anjali    |           1 |
+| Mumbai    | Sadhna    |           1 |
++-----------+-----------+-------------+
+
+
+mysql> select city , avg(marks) from student_record group by city;
++-----------+------------+
+| city      | avg(marks) |
++-----------+------------+
+| pune      |   486.5000 |
+| Bengaluru |   450.0000 |
+| patna     |   350.0000 |
+| Mumbai    |   380.0000 |
++-----------+------------+
+
+
+
+
+mysql> SELECT name FROM student_record ORDER BY name ASC;
++-----------+
+| name      |
++-----------+
+| Anjali    |
+| mukesh    |
+| patel     |
+| rishikesh |
+| Sadhna    |
++-----------+
+
+
+
+mysql> select name from student_record order by name asc;
++-----------+
+| name      |
++-----------+
+| Anjali    |
+| mukesh    |
+| patel     |
+| rishikesh |
+| Sadhna    |
++-----------+
+
+
+
+mysql> select city, max(marks) from student_record group by city having max(marks) > 400;
++-----------+------------+
+| city      | max(marks) |
++-----------+------------+
+| pune      |        489 |
+| Bengaluru |        450 |
++-----------+------------+
+2 rows in set (0.01 sec)
+
+mysql> select city, max(marks) from student_record group by city having min(marks) > 400;
++-----------+------------+
+| city      | max(marks) |
++-----------+------------+
+| pune      |        489 |
+| Bengaluru |        450 |
++-----------+------------+
+
+
+# command order : - 
+
+SELECT , FROM , WHERE , GROUP BY , HAVING , ORDER BY. 
+
+
+
+mysql> select city, max(marks)
+    -> from student_record
+    -> where grade = 'a'
+    -> group by city
+    -> having max(marks) > 400
+    -> order by city asc;
++------+------------+
+| city | max(marks) |
++------+------------+
+| pune |        489 |
++------+------------+
+
+
+# important command : SET SQL_SAFE_UPDATES = 0; 
+
+
+mysql> update student_record set grade = '0' where grade = 'A';
+Query OK, 3 rows affected (0.02 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   484 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
++-----+-----------+-------+-----------+-------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> update student_record set marks = 389 where id = 102;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
++-----+-----------+-------+-----------+-------+
+5 rows in set (0.00 sec)
+
+
+# delete : row ke inside data ko delete kr dena . 
+# insert : row ke inside data ko fill krna . 
+
+
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
+| 106 | patna     |    35 | Anjali    | F     |
++-----+-----------+-------+-----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> update student_record set marks = 33 where id = 106;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
+| 106 | patna     |    33 | Anjali    | F     |
++-----+-----------+-------+-----------+-------+
+6 rows in set (0.00 sec)
+
+
+
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
+| 106 | patna     |    33 | Anjali    | F     |
++-----+-----------+-------+-----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> delete from student_record where id = 106;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
++-----+-----------+-------+-----------+-------+
+
+
+
+
+
+mysql> create table dept(dept_id INT PRIMARY KEY,   name VARCHAR(50) );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> CREATE TABLE teacher (
+    ->   id INT PRIMARY KEY,
+    ->   name VARCHAR(25),
+    ->   dept_id INT,
+    ->   FOREIGN KEY (dept_id) REFERENCES dept(dept_id)
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+
+
+
+CREATE TABLE teacher (
+  id INT PRIMARY KEY,
+  name VARCHAR(25),
+  dept_id INT,
+  FOREIGN KEY (dept_id) REFERENCES dept(dept_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE  # : - use for when delete or updating anything , It will work for toghether . 
+);
+
+
+# Important notes : 
+delete is used for row but drop is used for table and database
+
+
+
+# ALTER command is used for column like add , drop , rename , change , modify 
+
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> alter table student add age INT;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> alter table student drop column age;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> alter table student add age INT NOT NULL DEFAULT 19;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
+| age        | int         | NO   |     | 19      |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> alter table student modify age varchar(2);
+Query OK, 4 rows affected (0.24 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
+| age        | varchar(2)  | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+
+mysql> ALTER TABLE student CHANGE age age INT;
+Query OK, 4 rows affected (0.21 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+
+mysql> alter table student rename to stu;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc stu;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+mysql> alter table stu rename to student;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| name       | varchar(12) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+
+
+# turncate : It is used for delete inside the  table data not delete table . but drop delete the table. 
+
+mysql> create view view1 as select name ,id from teacher;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from view1;
+Empty set (0.01 sec)
+
+
+mysql> drop view view1;
+Query OK, 0 rows affected (0.03 sec)
+
+
+
+
