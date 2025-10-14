@@ -1082,3 +1082,15 @@ for i in range(n):
             print(d, e)
         else:
             print(1) 
+
+
+
+# Dynamic list entered in the list 
+
+
+n = int(input("Enter how many number of list ")) 
+a = [] 
+for i in range(n):
+    b = int(input("Enter element : ")) 
+    a.append(b) 
+    print(a) 
