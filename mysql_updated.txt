@@ -648,3 +648,50 @@ Query OK, 0 rows affected (0.03 sec)
 
 
 
+# mysql all fields and create tables with all fields : - 
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age TINYINT,
+    email VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    signup_date DATE,
+    last_login DATETIME,
+    rating FLOAT(3,2),
+    bio TEXT,
+    profile_pic BLOB, # profile_pic varchar(255)
+    status ENUM('active', 'inactive', 'pending'),
+    preferences SET('email', 'sms', 'push'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+or 
+
+
+
+
+CREATE TABLE users_one (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age TINYINT,
+    email VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    signup_date DATE,
+    last_login DATETIME,
+    rating FLOAT(3,2),
+    bio TEXT,
+    profile_pic varchar(255),
+    status ENUM('active', 'inactive', 'pending'),
+    preferences SET('email', 'sms', 'push'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+INSERT INTO users_one (
+    name, age, email, is_active, signup_date, last_login, rating, bio, profile_pic, status, preferences
+) VALUES (
+    'Johnn Doe', 30, 'john.doe@example.com', TRUE, '2023-05-01', '2023-10-14 12:30:00', 4.5, 'Hello, I am John.', "C:/Users/mukes/Downloads/hero-bg", 'active', 'email,sms'
+);
