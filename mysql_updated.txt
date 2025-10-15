@@ -694,6 +694,56 @@ mysql> desc employee;
 4 rows in set (0.00 sec)
 
 
+# cross join : - 
+
+A CROSS JOIN returns the Cartesian product of two tables, meaning it combines every row from the first table with every row from the second table.
+
+📌 If table A has 3 rows and table B has 4 rows, the result will have 3 × 4 = 12 rows.
+
+
+mysql> CREATE TABLE colors (
+    ->   id INT,
+    ->   color VARCHAR(20)
+    -> );
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> INSERT INTO colors (id, color) VALUES
+    -> (1, 'Red'),
+    -> (2, 'Green'),
+    -> (3, 'Blue');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE sizes (
+    ->   id INT,
+    ->   size VARCHAR(20)
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> INSERT INTO sizes (id, size) VALUES
+    -> (1, 'Small'),
+    -> (2, 'Medium');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT color, size
+    -> FROM colors
+    -> CROSS JOIN sizes;
++-------+--------+
+| color | size   |
++-------+--------+
+| Red   | Medium |
+| Red   | Small  |
+| Green | Medium |
+| Green | Small  |
+| Blue  | Medium |
+| Blue  | Small  |
++-------+--------+
+6 rows in set (0.01 sec)
+
+
+
+
 
 
 # turncate : It is used for delete inside the  table data not delete table . but drop delete the table. 
