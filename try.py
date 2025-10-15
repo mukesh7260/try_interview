@@ -1094,3 +1094,27 @@ for i in range(n):
     b = int(input("Enter element : ")) 
     a.append(b) 
     print(a) 
+
+
+#           or 
+
+
+n = int(input("Enter how many number of list : ")) 
+a = []
+for i in range(n):
+    b = int(input()) 
+    a.append(b)
+    print(a) 
+
+
+#    dynamic dictionary 
+
+
+d = {} 
+n = int(input("how many number of items insert in dict : ")) 
+for i in range(n):
+    key = input(f"Enter key {i + 1} : ") 
+    value = input(f"Enter value for key {key} : ") 
+    d[key] = value 
+print(d) 
+ 
