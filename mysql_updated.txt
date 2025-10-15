@@ -808,3 +808,153 @@ INSERT INTO users_one (
 ) VALUES (
     'Johnn Doe', 30, 'john.doe@example.com', TRUE, '2023-05-01', '2023-10-14 12:30:00', 4.5, 'Hello, I am John.', "C:/Users/mukes/Downloads/hero-bg", 'active', 'email,sms'
 );
+
+
+
+# TRANSACTION COMMIT LANGUGAE IN MYSQL . 
+
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
++-----+-----------+-------+-----------+-------+
+5 rows in set (0.03 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student_record values(106,"patna" , 356 ,"chanchal" , "A");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
+| 106 | patna     |   356 | chanchal  | A     |
++-----+-----------+-------+-----------+-------+
+6 rows in set (0.01 sec)
+
+mysql> delete from student_record where id = 106;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
++-----+-----------+-------+-----------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
++-----+-----------+-------+-----------+-------+
+5 rows in set (0.00 sec)
+
+
+
+
+mysql> insert into student_record values(106,"patna" , 356 ,"chanchal" , "A");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
+| 106 | patna     |   356 | chanchal  | A     |
++-----+-----------+-------+-----------+-------+
+6 rows in set (0.01 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
+| 106 | patna     |   356 | chanchal  | A     |
++-----+-----------+-------+-----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+
+mysql> delete from student_record where id = 106;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
++-----+-----------+-------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from student_record;
++-----+-----------+-------+-----------+-------+
+| id  | city      | marks | name      | grade |
++-----+-----------+-------+-----------+-------+
+| 101 | pune      |   489 | mukesh    | 0     |
+| 102 | pune      |   389 | rishikesh | 0     |
+| 103 | Bengaluru |   450 | patel     | A+    |
+| 104 | patna     |   350 | Anjali    | B     |
+| 105 | Mumbai    |   380 | Sadhna    | 0     |
+| 106 | patna     |   356 | chanchal  | A     |
++-----+-----------+-------+-----------+-------+
+6 rows in set (0.00 sec)
+
+
+# start transaction will use every commit for rollback . when you commit then you can not rollback . Always remember . 
+
+savepoint payal; 
+
+rollback to payal;
+
