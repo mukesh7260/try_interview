@@ -958,3 +958,51 @@ savepoint payal;
 
 rollback to payal;
 
+
+
+
+mysql> create table studentp(id int auto_increment primary key , name varchar(25) , city varchar(20) , marks int);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> desc studentp;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(25) | YES  |     | NULL    |                |
+| city  | varchar(20) | YES  |     | NULL    |                |
+| marks | int         | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+
+mysql> insert into studentp (name, city, marks) values ("Rishikesh", "patna", 79); # this command generate automate id. 
+
+mysql> insert into studentp (name, city, marks) values ("Nupur", "patna", 88);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into studentp (name, city, marks) values ("Anjali", "Bhubneswar", 83);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into studentp (name, city, marks) values ("Nilam", "Bhubneswar", 86);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into studentp (name, city, marks) values ("Vikash", "Benagalure", 96);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from studentp;
++----+-----------+------------+-------+
+| id | name      | city       | marks |
++----+-----------+------------+-------+
+|  1 | mukesh    | patna      |    89 |
+|  2 | Rishikesh | patna      |    79 |
+|  3 | Nupur     | patna      |    88 |
+|  4 | Anjali    | Bhubneswar |    83 |
+|  5 | Nilam     | Bhubneswar |    86 |
+|  6 | Vikash    | Benagalure |    96 |
++----+-----------+------------+-------+
+
+
+
+mysql> alter table studentp change column roll roll_name varchar(23);
+Query OK, 6 rows affected (0.19 sec)
