@@ -72,9 +72,20 @@ for i in range(n + 1):
         print("buzz fuzz")  # Special case for multiples of 4
     elif i % 2 == 0:
         print("buzz")
-    else:
-        print("fuzz")                
+else:
+    print("fuzz")                
 
+
+# correct this one related example : - 
+
+n = int(input("Enter any number : ")) 
+for i in range(n):
+    if i % 4 == 0:
+        print("buzz fuzz") 
+    elif i % 2 == 0:
+        print("fuzz") 
+else:
+    print("buzz")
 
 # DIAMOND SHAPE 
 
@@ -1105,6 +1116,19 @@ for i in range(n):
     b = int(input()) 
     a.append(b)
     print(a) 
+ 
+
+
+# or 
+
+
+n = int(input("how many number of list you want entered : ")) 
+l = [] 
+for i in range(n):
+    l.append(int(input(f"Enter number {i+1} : "))) 
+print(l)
+
+
 
 
 #    dynamic dictionary 
@@ -1118,3 +1142,17 @@ for i in range(n):
     d[key] = value 
 print(d) 
  
+
+
+
+# or 
+
+
+
+n = int(input("how many no. of items for dictionary : ")) 
+d = {}
+for i in range(n):
+    k = input("enter key: ")
+    v = input("enter value : ") 
+    d.update({k:v}) 
+print(d)  

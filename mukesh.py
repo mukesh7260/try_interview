@@ -1,6 +1,7 @@
-n = int(input("enter how many number of Iist item : ")) 
-a = []
+n = int(input("how many no. of items for dictionary : ")) 
+d = {}
 for i in range(n):
-    b = int(input())
-    a.append(b)
-    print(a)
+    k = input("enter key: ")
+    v = input("enter value : ") 
+    d.update({k:v}) 
+print(d) 
