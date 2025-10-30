@@ -396,7 +396,7 @@ for i in s:
 for k , v in d.items():
     print(f'{k} : {v}')
 
-
+#   decorator function example 
 
 def mukesh(add):
     def kumar():
@@ -534,7 +534,16 @@ for i in range(n+1):
     else:
         print(i)
 
+# or 
 
+n = int(input(" enter number : ")) 
+for i in range(n):
+    if i % 2 == 0 and i % 3 == 0:
+        print("buzz fuzz ") 
+    elif i % 2 == 0:
+        print("buzz ")
+    else:
+        print("fuzz ") 
 
 
  # reverse number and palindrom 
@@ -1156,3 +1165,19 @@ for i in range(n):
     v = input("enter value : ") 
     d.update({k:v}) 
 print(d)  
+
+
+#       count the each letter from the string 
+
+
+s = "rohit sharma"
+
+for letter in s:
+    print(letter, "-", s.count(letter))
+
+ # or secont method 
+
+s = "rohit sharma".replace(" ", "")
+
+for letter in set(s):
+    print(letter, "-", s.count(letter))
