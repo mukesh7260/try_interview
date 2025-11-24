@@ -1,0 +1,1 @@
+I worked SBI project which was based on automation using of selenium . So whenever I want to automate any field then first I was select xpath of that filed and this xpath was saved in db file then I was search text filed input which was automate using of get_elements or get_element method . these two method is of selenium .
