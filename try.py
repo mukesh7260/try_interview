@@ -1138,6 +1138,17 @@ for i in range(n):
 print(l)
 
 
+# or 
+
+
+n = int(input("how many number of list you want entered : ")) 
+a = [] 
+for i in range(n):
+    a.append(int(input(f"Enter  {i+1} number : ")))
+print(a) 
+
+
+
 
 
 #    dynamic dictionary 
@@ -1181,3 +1192,13 @@ s = "rohit sharma".replace(" ", "")
 
 for letter in set(s):
     print(letter, "-", s.count(letter))
+
+
+
+# or 
+
+s = input("Enter any string: ")
+a = s.replace(" ", "")
+
+for letter in set(a):
+    print(letter, a.count(letter))

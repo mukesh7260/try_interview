@@ -1,4 +1,8 @@
- create table student(student_id int , name varchar(12));
+
+# system clear; : - used for clear the screen from mysql terminal 
+
+
+create table student(student_id int , name varchar(12));
 
 insert into student values(101 , "mukesh");
 
