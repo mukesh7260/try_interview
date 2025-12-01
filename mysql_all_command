@@ -1,0 +1,242 @@
+show databaes 
+create database 
+use database 
+
+create table student(student_id int , name varchar(12));
+
+insert into student values(101 , "mukesh");
+
+select * from student;
+
+# INNER JOIN 
+
+select * from student inner join course on student.student_id = course_id;
+
+select * from student inner join course on student.student_id = course_id;
+
+
+ # LEFT JOIN 
+
+mysql> select * from student left join course on student.student_id = course.course_id; 
+
+
+# RIGHT JOIN 
+
+mysql> select * from student right join course on student.name = course_name;
+
+
+select * from student right join course on student.student_id = course.course_id; 
+
+
+
+# FULL JOIN OR FULL OUTER JOIN 
+
+mysql> SELECT *
+    -> FROM student
+    -> LEFT JOIN course ON student.student_id = course.course_id
+    ->
+    -> UNION
+    ->
+    -> SELECT *
+    -> FROM student
+    -> RIGHT JOIN course ON student.student_id = course.course_id;
+
+
+
+# Left Exclusive Join
+
+mysql> select * from student; 
+
+mysql> select * from course;
+
+mysql> select * from student left join course on student.student_id = course.course_id where course.course_id is null; 
+
+
+# Right Exclusive JOin 
+
+mysql> select * from student right join course on student.student_id = course.course_id where course.course_id is null;
+Empty set (0.00 sec)
+
+
+
+mysql> SELECT * FROM student LEFT JOIN course ON student.student_id = course.course_id WHERE course.course_id IS NULL  UNION   SELECT * FROM student RIGHT JOIN course ON student.student_id = course.course_id WHERE student.student_id IS NULL;
+
+
+# self join 
+
+select * from employee;
+
+select * from employee as a join employee as b on a.id = b.manage_id;
+
+select a.name,b.name from employee as a join employee as b on a.id = b.manage_id;
+
+
+select distinct from city student; # duplicate value will remove 
+
+mysql> select * from student_record limit 3;
+
+
+mysql> select distinct city from student_record;
+
+
+mysql> select city from student_record group by city;
+
+
+mysql> select city , count(name) from student_record group by city;
+
+
+mysql> select city , name , count(name) from student_record group by city , name;
+
+
+mysql> select city , avg(marks) from student_record group by city;
+
+
+mysql> SELECT name FROM student_record ORDER BY name ASC;
+
+
+mysql> select name from student_record order by name asc;
+
+
+mysql> select city, max(marks) from student_record group by city having max(marks) > 400;
+
+
+mysql> select city, max(marks) from student_record group by city having min(marks) > 400;
+
+
+
+# command order : - 
+
+SELECT , FROM , WHERE , GROUP BY , HAVING , ORDER BY.
+
+
+mysql> select city, max(marks)
+    -> from student_record
+    -> where grade = 'a'
+    -> group by city
+    -> having max(marks) > 400
+    -> order by city asc;
+
+
+
+
+# important command : SET SQL_SAFE_UPDATES = 0; 
+
+
+mysql> update student_record set grade = '0' where grade = 'A';
+
+
+
+update student_record set marks = 389 where id = 102;
+
+
+mysql> update student_record set marks = 33 where id = 106;
+
+
+
+mysql> delete from student_record where id = 106;
+
+
+mysql> create table dept(dept_id INT PRIMARY KEY,   name VARCHAR(50) );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> CREATE TABLE teacher (
+    ->   id INT PRIMARY KEY,
+    ->   name VARCHAR(25),
+    ->   dept_id INT,
+    ->   FOREIGN KEY (dept_id) REFERENCES dept(dept_id)
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+
+
+# Important notes : 
+delete is used for row but drop is used for table and database
+
+
+# ALTER command is used for column like add , drop , rename , change , modify 
+
+
+alter table student add age INT;
+
+
+mysql> alter table student drop column age;
+
+
+mysql> alter table student add age INT NOT NULL DEFAULT 19;
+
+
+
+mysql> alter table student modify age varchar(2);
+
+
+
+mysql> ALTER TABLE student CHANGE age age INT;
+
+
+mysql> alter table student rename to stu;
+
+
+mysql> alter table stu rename to student;
+
+
+mysql> alter table employee drop column emp_location;
+
+
+mysql> alter table employee modify emp_salary varchar(13);
+
+
+mysql> alter table employee change emp_salary emp_account int;
+
+
+# turncate : It is used for delete inside the  table data not delete table . but drop delete the table. 
+
+mysql> create view view1 as select name ,id from teacher;
+
+
+mysql> select * from view1;
+Empty set (0.01 sec)
+
+
+mysql> drop view view1;
+Query OK, 0 rows affected (0.03 sec)
+
+
+
+
+# mysql all fields and create tables with all fields : - 
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age TINYINT,
+    email VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    signup_date DATE,
+    last_login DATETIME,
+    rating FLOAT(3,2),
+    bio TEXT,
+    profile_pic BLOB, # profile_pic varchar(255)
+    status ENUM('active', 'inactive', 'pending'),
+    preferences SET('email', 'sms', 'push'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE users_one (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age TINYINT,
+    email VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    signup_date DATE,
+    last_login DATETIME,
+    rating FLOAT(3,2),
+    bio TEXT,
+    profile_pic varchar(255),
+    status ENUM('active', 'inactive', 'pending'),
+    preferences SET('email', 'sms', 'push'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
