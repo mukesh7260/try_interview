@@ -1147,7 +1147,13 @@ for i in range(n):
     a.append(int(input(f"Enter  {i+1} number : ")))
 print(a) 
 
+# or 
 
+n = int(input("Enter how many number of list : ")) 
+a = []
+for i in range(n):
+    a.append(input(f"Enter {i +1} number :" ))
+print(a)
 
 
 
@@ -1202,3 +1208,16 @@ a = s.replace(" ", "")
 
 for letter in set(a):
     print(letter, a.count(letter))
+
+
+s = "rohit sharma".replace(" ","")
+for i in set(s):
+    print(i , "-", s.count(i)) 
+
+# or 
+
+# important question for interview purpose 
+
+s = input("Enter any string : ").replace(" ","") 
+for letter in set(s):
+    print(letter , "-" , s.count(letter))
