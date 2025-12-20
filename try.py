@@ -1221,3 +1221,18 @@ for i in set(s):
 s = input("Enter any string : ").replace(" ","") 
 for letter in set(s):
     print(letter , "-" , s.count(letter))
+
+
+
+
+
+n = int(input("Enter any number : ")) 
+fact = 1 
+if n == 0 and n == 1:
+    print(1) 
+elif n < 0:
+    print("please enter greater than zero number : ") 
+else:
+    for i in range(1,n+1):
+        fact = fact * i 
+    print(fact)
