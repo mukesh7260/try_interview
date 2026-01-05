@@ -1236,3 +1236,14 @@ else:
     for i in range(1,n+1):
         fact = fact * i 
     print(fact)
+
+
+
+
+a= [1,2,3,4]
+sum = 1 
+for i in a:
+    sum = sum * i
+result = [sum // i for i in a]
+print(result)
+# output=[24,12,8,6]    
