@@ -1339,3 +1339,21 @@ print(result)
 #     result[-1][1] = max(result[-1][1], i[1])
 # मतलब:
 # पुराने end और नए end में से जो बड़ा हो, वही रखो
+
+
+
+
+
+l = ["abc"] 
+s = l[0]
+result = []
+for i in range(len(s)):
+    for j in range(len(s)):
+        for k in range(len(s)):
+            if i != j and j != k and i != k:
+                result.append(s[i] + s[j] + s[k])
+
+print(result)
+
+
+# o/p: - ['abc','acb','bac','bca','cab','cba']
