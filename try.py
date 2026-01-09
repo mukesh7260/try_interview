@@ -1247,3 +1247,95 @@ for i in a:
 result = [sum // i for i in a]
 print(result)
 # output=[24,12,8,6]    
+
+
+
+
+# input : "abcabcbb"
+# output : "abc"
+
+s = "abcabcbb"
+result = ""
+
+for ch in s:
+    if ch not in result:
+        result += ch
+    else:
+        break
+
+print(result)   # abc
+
+# how to work : - 
+
+# 🧠 Kaise kaam karta hai
+# Ek empty string result
+# Har character check karo
+# Agar pehle nahi aaya → add karo
+# Repeat mila → break
+
+
+
+
+s = "abcabcbb"
+w = ""
+for i in s:
+    if i not in w: # i ka value w me nahi h 
+        w = w + i
+    else:
+        break 
+print(w)
+
+
+
+
+
+
+
+
+
+intervals = [[1,3],[2,6],[8,10],[15,18]]
+# o/p : - [[1,6],[8,10],[15,18]]
+intervals.sort()
+
+result = []
+
+for i in intervals:
+    if not result or result[-1][1] < i[0]:
+        result.append(i)
+    else:
+        result[-1][1] = max(result[-1][1], i[1])
+
+print(result)
+
+
+
+# working process 
+
+# for i in intervals:
+# एक-एक interval उठाएगा, जैसे:
+# [1,3]
+# [2,6]
+# [8,10]
+# [15,18]
+
+
+
+# if not result or result[-1][1] < i[0]:
+# इसका मतलब:
+# अगर result खाली है
+# या
+# पिछला interval का end (result[-1][1])
+# नए interval के start (i[0]) से छोटा है
+# 👉 यानी overlap नहीं है
+
+
+
+# Overlap नहीं है → add कर दो
+# result.append(i)
+
+
+# Else: Overlap है → merge करो
+# else:
+#     result[-1][1] = max(result[-1][1], i[1])
+# मतलब:
+# पुराने end और नए end में से जो बड़ा हो, वही रखो
