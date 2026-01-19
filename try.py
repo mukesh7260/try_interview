@@ -1286,9 +1286,7 @@ for i in s:
 print(w)
 
 
-
-
-
+# o/p: abc
 
 
 
