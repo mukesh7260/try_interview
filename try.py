@@ -1304,7 +1304,6 @@ for i in intervals:
         result.append(i)
     else:
         result[-1][1] = max(result[-1][1], i[1])
-
 print(result)
 
 
@@ -1357,3 +1356,101 @@ print(result)
 
 
 # o/p: - ['abc','acb','bac','bca','cab','cba']
+
+
+
+s = 'abc' 
+l = s[0] 
+result = [] 
+for i in range(len(s)):
+    for j in range(len(s)):
+        for k in range(len(s)):
+            if i != j and j != k and k != i :
+                result.append(s[i]+s[j]+s[k]) 
+print(result)
+
+
+
+# o/p: - ['abc','acb','bac','bca','cab','cba']
+
+
+
+l = [[12,24], [3,9]]
+l.sort()
+print(l)
+
+# o/p: - [[3,9], [12,24]]
+
+
+
+
+
+intervals = [[1,3],[2,6],[8,10],[15,18]]
+# o/p : - [[1,6],[8,10],[15,18]]
+intervals.sort()
+
+result = []
+for i in intervals:
+    if not result: # Pehle check: result empty hai?
+        result.append(i)
+
+    elif result[-1][1] < i[0]: # Phir check: overlap nahi hai?
+        result.append(i)
+    else:
+        result[-1][1] = max(result[-1][1], i[1])
+print(result)
+
+
+# empty and not overlap case me add karo 
+# overlap case me merge karo . yahi concept hai
+
+
+
+
+
+
+intervals = [[1,4],[4,5],[7,9]]
+intervals.sort()
+
+result = []
+
+for i in intervals:
+    if not result or result[-1][1] < i[0]:
+        result.append(i)
+    else:
+        result[-1][1] = max(result[-1][1], i[1])
+
+print(result)
+
+
+
+
+# result empty hai
+# ✅ add karo
+# result = [[1,4]]
+
+
+# result = [[1,4]]
+# i = [4,5]
+
+
+
+# 4 < 4
+# toh result False hota hai.
+# 👉 Matlab no overlap wali condition fail ho gayi
+# 👉 Iska matlab intervals touch / overlap kar rahe hain
+# 👉 Isliye merge karenge, add nahi
+
+
+
+# Interval [4,5]
+# Check:
+# result[-1][1] < i[0]
+# 4 < 4   ❌ false 
+
+
+
+result = [[1,4]] 
+print(result[-1][1])
+
+# o/p: 4
