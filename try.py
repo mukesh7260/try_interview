@@ -1469,3 +1469,14 @@ print(result)
 
 
 #  o/p : - [[2, 7], [8, 10]]
+
+
+
+l = [23,34,54,65]
+max = l[0] 
+for i in range(len(l)):
+    if l[i] > max:
+        max = l[i]
+print(max)
+
+# o/p: - 65
