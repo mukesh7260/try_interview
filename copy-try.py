@@ -1224,7 +1224,7 @@ for i in range(1,1000):
             print(i , end = ' ')
 
 print("\n")
-print("Total number of prime number is  ",count)/
+print("Total number of prime number is  ",count)
 
 
 
@@ -1234,7 +1234,29 @@ print("Total number of prime number is  ",count)/
 s = "mukesh"
 w = ''
 for i in s:
-    # w = i + w or 
+    # w = i + w 
+    #   or 
     i = i + w
     w = i
-print(w,end=" ")
+print(w,end=" ") 
+
+
+
+
+
+
+
+# fabonacci series example 
+
+n = int(input("How many number of fabonacci series : ")) 
+a = 0 
+b = 1 
+sum = 0 
+for i in range(0,n):
+    print(a , end = " ") 
+    # print()
+    sum = sum + a 
+    c = a + b 
+    a = b 
+    b = c 
+print()  
