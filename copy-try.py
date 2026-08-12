@@ -1195,3 +1195,17 @@ else:
     for i in range(1,n+1):
         fact = fact * i 
 print(f'factorial of number : {n} is : {fact}')
+
+
+
+
+
+s = "sdkjf78934239ie!2#$%^*f"
+l = ['0','1','2','3','4','5','6','7','8','9']
+
+for i in range(len(s)):
+    print(i,'print iiiiiiiiiiiiii')
+    print(s[i],'s[i] **********')
+    if s[i] in l:
+        if int(s[i]) % 2 == 0:
+            print(s[i], end=" ") 
